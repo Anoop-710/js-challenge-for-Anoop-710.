@@ -97,13 +97,10 @@ function validate(){
         document.getElementById("invalid-phone").style.display = 'block';
         document.getElementById("valid-phone").style.display = 'none';
     }
-    // If no error
-    // 1. Show alert with Success Message
-    // 2.Reset all fields
-
 
     // if(error === false)
     if(!error){
+        fillForm(firstName, lastName, userName, email, phone, address, website, company)
         window.alert("Your details have been saved successfully");
         resetFields();
     }
@@ -122,3 +119,30 @@ function resetFields () {
 	document.getElementById('valid-phone').style.display = 'none'
 	document.getElementById('valid-address').style.display = 'none'
 }
+
+
+
+var num = 1;
+function fillForm(firstName,lastName,userName,email,address,phone,website,company){
+    const table = document.getElementById('myTable');
+    const row = table.insertRow();
+    const cell1 = row.insertCell([0]);
+    const cell2 = row.insertCell([1]);
+    const cell3 = row.insertCell([2]);
+    const cell4 = row.insertCell([3]);
+    const cell5 = row.insertCell([4]);
+    const cell6 = row.insertCell([5]);
+    const cell7 = row.insertCell([6]);
+    const cell8 = row.insertCell([7]);
+    
+    
+    cell1.textContent = num++;
+    cell2.textContent = firstName + lastName;
+    cell3.textContent = userName;
+    cell4.textContent = email;
+    cell5.textContent = address;
+    cell6.textContent = phone;
+    cell7.textContent = website;
+    cell8.textContent = company;
+}
+
