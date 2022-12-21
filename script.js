@@ -1,47 +1,60 @@
 function validate(){
     let firstName = document.getElementById('first-name').value
     let lastName = document.getElementById('last-name').value
+    let userName = document.getElementById('user-name').value
     let email = document.getElementById('email').value
-    let state = document.getElementById('state').value
-    let city = document.getElementById('city').value
-    let zipCode = document.getElementById('zip-code').value //number from input is converted into string
-    let t_and_c = document.getElementById('t-and-c').checked
-    console.log(firstName,lastName,email,city,zipCode,t_and_c);
+    let address = document.getElementById('address').value
+    let phone = document.getElementById('phone').value
+    let website = document.getElementById('website').value
+    let company = document.getElementById('company').value
+    console.log(firstName,lastName,email,address,phone,website,company);
 
     //To check if error exists to display alert of success message
     let error = false;
+    
+    let excludeChar = /[~!@#$%&*()+=;:<>,.?/|{}`]/
 
-
-    if(firstName.length >= 2){
-        document.getElementById('valid-first-name').style.display = 'block';
-        document.getElementById('invalid-first-name').style.display = 'none';
-    }
-    else{
+    // first name
+    if(excludeChar.test(firstName) || firstName.length < 3){
         error = true;
         document.getElementById('invalid-first-name').style.display = 'block';
         document.getElementById('valid-first-name').style.display = 'none';
-    }
-
-
-    if(lastName.length >= 2){
-        document.getElementById('valid-last-name').style.display = 'block';
-        document.getElementById('invalid-last-name').style.display = 'none';
+       
     }
     else{
+        document.getElementById('valid-first-name').style.display = 'block';
+        document.getElementById('invalid-first-name').style.display = 'none';
+    }
+
+
+    // last name
+    if(excludeChar.test(lastName) || lastName.length < 3){
         error = true;
         document.getElementById('invalid-last-name').style.display = 'block';
         document.getElementById('valid-last-name').style.display = 'none';
+        
+    }
+    else{
+        document.getElementById('valid-last-name').style.display = 'block';
+        document.getElementById('invalid-last-name').style.display = 'none';
     }
 
 
-    /*  Email:
-        1.Must include '@'
-        2.Must include '.'
-        3.At least one character before '@' 
-        4.At least two characters after last'.'
-    */
+    // Username
+    let userNameChar = /[~!@#$%&*()+=;:<>,?/|{}`]/
+    if(userNameChar.test(userName) || !userName.includes('.')){
+        error = true;
+        document.getElementById("invalid-user-name").style.display = 'block';
+        document.getElementById("valid-user-name").style.display = 'none';
+    }
+    else{
+        document.getElementById("valid-user-name").style.display = 'block';
+        document.getElementById("invalid-user-name").style.display = 'none';
 
-    // my code (email.charAt(0)!=='@') && (email.charAt(email.length-1)!=='.' && (email.charAt(email.length-2)!=='.'))
+    }
+
+    // Email
+    
     if(email.includes('@') && 
         email.includes('.') && 
         email.indexOf("@")>0 && 
@@ -57,73 +70,33 @@ function validate(){
         document.getElementById("valid-email").style.display = 'none';
     }
 
-    //state
-    if(state!='Choose...'){
-        document.getElementById("valid-state").style.display = 'block';
-        document.getElementById("invalid-state").style.display = 'none';
+    
+    // Address
+    if(address.length<1){
+        error = true;
+        document.getElementById("invalid-address").style.display = 'block';
+        document.getElementById("valid-address").style.display = 'none';
     }
     else{
-        error = true;
-        document.getElementById("invalid-state").style.display = 'block';
-        document.getElementById("valid-state").style.display = 'none';
+        document.getElementById("valid-address").style.display = 'block';
+        document.getElementById("invalid-address").style.display = 'none';
     }
 
+    // Phone Number
+    let phoneNumber = /\d{3}-?\d{3}-?\d{4}/
 
-
-
-    //City : At least 3 characters
-
-    if(city.length<3){
-        error = true;
-        document.getElementById("valid-city").style.display = 'none';
-        document.getElementById("invalid-city").style.display = 'block';
+    if(phoneNumber.test(phone) && phone.charAt(3)==='-' && phone.substr(8,11).length === 4){
+        console.log(phone.substr(7,11));
+        document.getElementById("valid-phone").style.display = 'block';
+        document.getElementById("invalid-phone").style.display = 'none';
     }
-    else{
-        document.getElementById("valid-city").style.display = 'block';
-        document.getElementById("invalid-city").style.display = 'none';
-    }
-
-    /* Zip:
-        1.It should have exact 6 characters
-        2. Only numbers allowed
-    */
-   
-    let numberZip = parseInt(zipCode)
-    //using input = number in html
-    if(!isNaN(numberZip) && 
-        numberZip > 100000 && 
-        numberZip <999999
-    ){
-        document.getElementById("valid-zip").style.display = 'block';
-        document.getElementById("invalid-zip").style.display = "none";
-    }
-    else{
-        error = true;
-        document.getElementById("valid-zip").style.display = 'none';
-        document.getElementById("invalid-zip").style.display = "block";
-    }
-
-
-    /* use parseInt(zipCode)
-    !isNaN(parseInt(zipCode))
-    isNaN is function that checks if the expression/statement is number or not
-    */
-
-    //EDGE CASE of parseInt
-    //123xax gets converted into 123 , it doesn't throw an error
-
-
-    if(t_and_c){
         
-        document.getElementById("tNc-invalid").style.display = "none"
-    }
     else{
         error = true;
-        document.getElementById("tNc-invalid").style.display = "block"
+        console.log(phone.substr(8,11));
+        document.getElementById("invalid-phone").style.display = 'block';
+        document.getElementById("valid-phone").style.display = 'none';
     }
-
-
-
     // If no error
     // 1. Show alert with Success Message
     // 2.Reset all fields
@@ -145,8 +118,7 @@ function resetFields () {
 	document.getElementById('valid-first-name').style.display = 'none'
 	document.getElementById('valid-last-name').style.display = 'none'
 	document.getElementById('valid-email').style.display = 'none'
-	document.getElementById('valid-city').style.display = 'none'
-	document.getElementById('valid-state').style.display = 'none'
-	document.getElementById('valid-zip').style.display = 'none'
-	document.getElementById('valid-tNc').style.display = 'none'
+	document.getElementById('valid-user-name').style.display = 'none'
+	document.getElementById('valid-phone').style.display = 'none'
+	document.getElementById('valid-address').style.display = 'none'
 }
