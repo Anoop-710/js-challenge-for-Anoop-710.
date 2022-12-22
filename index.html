@@ -17,11 +17,11 @@
 
     <!--Add form from bootstrap  -->
     <div class="container main-wrapper">
-        <h1 class="display-4 page-title text-center">Users</h1>
+        <h1 class="display-1 page-title text-center">Users</h1>
         <form class="row g-3 registration-form" id="registration-form" >
 
             <!-- First name -->
-            <div class="col-md-4">
+            <div class="col-md-6">
               <label for="first-name" class="form-label">First name</label>
               <input type="text" class="form-control" id="first-name" value="" required autocomplete="off" >
               
@@ -34,7 +34,7 @@
             </div>
 
             <!-- Last name -->
-            <div class="col-md-4">
+            <div class="col-md-6">
               <label for="last-name" class="form-label">Last name</label>
               <input type="text" class="form-control" id="last-name" value="" required autocomplete="off">
               <div class="valid-feedback" id="valid-last-name">
@@ -47,7 +47,7 @@
 
 
             <!-- Username -->
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <label for="user-name" class="form-label">Username</label>
                 <input type="text" class="form-control" id="user-name" value="" required autocomplete="off">
                 <div class="valid-feedback" id="valid-user-name">
@@ -60,7 +60,7 @@
 
 
             <!-- Email -->
-            <div class="col-md-4">
+            <div class="col-md-6">
               <label for="email" class="form-label">Email</label>
               <div class="input-group has-validation">
                 <span class="input-group-text" id="inputGroupPrepend">@</span>
@@ -89,7 +89,7 @@
 
 
             <!-- Phone -->
-            <div class="col-md-3">
+            <div class="col-md-6">
               <label for="phone" class="form-label">Phone</label>
               <input type="text" class="form-control" id="phone" required autocomplete="off" placeholder="ddd-ddd-dddd">
               <!-- type = number for number only input -->
@@ -103,7 +103,7 @@
 
 
             <!-- Website -->
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <label for="website" class="form-label">Website</label>
                 <input type="text" class="form-control" id="website" required autocomplete="off" placeholder="optional">
                 <div class="valid-feedback" id="valid-website">
@@ -117,44 +117,52 @@
 
             <!-- Company name -->
             
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <label for="company" class="form-label">Company name</label>
                 <input type="text" class="form-control" id="company" required autocomplete="off" placeholder="optional">
             </div>
 
 
             
-            <div class="col-12">
+            <div class="col-12" id="btn">
               <button class="btn btn-primary" type="button" onclick="validate()">Submit </button>
             </div>
           </form>
+
+
+
+          <!-- Table -->
+        <div>
+            <table id="myTable" class="table table-bordered table-hover ">
+                <tr>
+                <th>Sr. No.</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Website</th>
+                <th>Company name</th>
+                </tr>
+                <!-- <tr class="table-row">
+                <td class="table-data1">1</td>
+                <td class="table-data2">John Doe</td>
+                <td class="table-data3">johndoe</td>
+                <td class="table-data4">johndoe@example.com</td>
+                <td class="table-data5"></td>123 Main St</td>
+                <td class="table-data6">123-456-7890</td>
+                <td class="table-data7">www.example.com</td>
+                <td class="table-data8">Acme Inc</td>
+                </tr> -->
+            </table>
+        </div>
+
     </div>
     
 
     
-    <!-- Table -->
-    <table id="myTable">
-        <tr>
-          <th>Sr. No.</th>
-          <th>Name</th>
-          <th>Username</th>
-          <th>Email</th>
-          <th>Address</th>
-          <th>Phone</th>
-          <th>Website</th>
-          <th>Company name</th>
-        </tr>
-        <!-- <tr class="table-row">
-          <td class="table-data1">1</td>
-          <td class="table-data2">John Doe</td>
-          <td class="table-data3">johndoe</td>
-          <td class="table-data4">johndoe@example.com</td>
-          <td class="table-data5"></td>123 Main St</td>
-          <td class="table-data6">123-456-7890</td>
-          <td class="table-data7">www.example.com</td>
-          <td class="table-data8">Acme Inc</td>
-        </tr> -->
-      </table>
+    
+
   
 
 

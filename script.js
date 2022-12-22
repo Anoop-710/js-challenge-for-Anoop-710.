@@ -152,7 +152,7 @@ function fillForm(firstName,lastName,userName,email,address,phone,website,compan
 }
 
 
-const tableApi = (firstName,lastName,userName,email,address,phone,website,company) =>{
+const tableApi = () =>{
     fetch("https://jsonplaceholder.typicode.com/users")
     .then(response => response.json())
     .then(data => {data.forEach(user => {
