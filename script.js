@@ -9,7 +9,7 @@ function validate(){
     let company = document.getElementById('company').value
     console.log(firstName,lastName,email,address,phone,website,company);
 
-    //To check if error exists to display alert of success message
+    
     let error = false;
     
     let excludeChar = /[~!@#$%&*()+=;:<>,.?/|{}`]/
