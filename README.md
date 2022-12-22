@@ -6,5 +6,7 @@ in the challenge and appends the data to the table to its respective fields
 Preview of the project
 https://user-images.githubusercontent.com/111621777/209134643-518afb59-3300-4b51-bd3c-c17c925e03e4.mp4
 
-Deployed limk:
+Deployed link:
 https://chimerical-chaja-17c1df.netlify.app/
+
+To run the code on your machine, clone the github repo and open the project by installing live server extension in VS-code
