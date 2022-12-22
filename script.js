@@ -100,8 +100,8 @@ function validate(){
 
     // if(error === false)
     if(!error){
-        fillForm(firstName, lastName, userName, email, phone, address, website, company)
-        window.alert("Your details have been saved successfully");
+        fillForm(firstName,lastName,userName,email,address,phone,website,company)
+        // window.alert("Your details have been saved successfully");
         resetFields();
     }
 
@@ -125,7 +125,7 @@ function resetFields () {
 var num = 1;
 function fillForm(firstName,lastName,userName,email,address,phone,website,company){
     const table = document.getElementById('myTable');
-    const row = table.insertRow();
+    const row = table.insertRow(-1);
     const cell1 = row.insertCell([0]);
     const cell2 = row.insertCell([1]);
     const cell3 = row.insertCell([2]);
@@ -144,5 +144,48 @@ function fillForm(firstName,lastName,userName,email,address,phone,website,compan
     cell6.textContent = phone;
     cell7.textContent = website;
     cell8.textContent = company;
+
+    
+
+
+    
 }
 
+
+const tableApi = (firstName,lastName,userName,email,address,phone,website,company) =>{
+    fetch("https://jsonplaceholder.typicode.com/users")
+    .then(response => response.json())
+    .then(data => {data.forEach(user => {
+        console.log(data)
+        
+        let nameApi = user.name;
+        let userNameApi = user.username;
+        let emailApi = user.email;
+        let addressApi = user.address.street + ", " + user.address.suite + ", " + user.address.city + ", " + user.address.zipcode;
+        let phoneApi = user.phone;
+        let websiteApi = user.website;
+        let companyApi = user.company.name + ", " + user.company.catchPhrase + ", " + user.company.bs;
+        const table = document.getElementById('myTable');
+        const row = table.insertRow();
+        const cell1 = row.insertCell([0]);
+        const cell2 = row.insertCell([1]);
+        const cell3 = row.insertCell([2]);
+        const cell4 = row.insertCell([3]);
+        const cell5 = row.insertCell([4]);
+        const cell6 = row.insertCell([5]);
+        const cell7 = row.insertCell([6]);
+        const cell8 = row.insertCell([7]);
+
+        cell1.textContent = num++;
+        cell2.textContent = nameApi;
+        cell3.textContent = userNameApi;
+        cell4.textContent = emailApi;
+        cell5.textContent = addressApi;
+        cell6.textContent = phoneApi;
+        cell7.textContent = websiteApi;
+        cell8.textContent = companyApi;
+    });})
+    .catch(err => window.alert("Something went wrong while fetching the users."));
+}
+
+window.onload = tableApi()
